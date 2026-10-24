@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  html, body { width: 1200px; height: 630px; margin: 0; padding: 0; overflow: hidden; }
+  body { background: var(--bg); display: flex; flex-direction: column; justify-content: center; gap: 28px; padding: 0 80px !important; }
+  .og-eyebrow { font-size: 28px; letter-spacing: .12em; color: var(--muted); font-weight: 700; }
+  .og-title { font-family: var(--font-display); font-size: 120px; line-height: 1.05; margin: 0; color: var(--ink); }
+  .og-lead { font-size: 34px; color: var(--muted); margin: 0; }
+  .og-row { display: flex; gap: 22px; }
+  .og-row img { width: 96px; height: 96px; image-rendering: pixelated; background: var(--surface); border: 2px solid var(--line); border-radius: 16px; padding: 8px; }
+</style>
+</head>
+<body>
+  <span class="og-eyebrow">生き物シミュレーション</span>
+  <h1 class="og-title">いきもの転生</h1>
+  <p class="og-lead">40種類の生き物に生まれ変わって、15の分かれ道を生き抜こう</p>
+  <div class="og-row" id="row"></div>
+<script src="../assets/data.js"></script>
+<script>
+  // tools/make_og.js から使う、シェア画像のひな形
+  const cv = document.createElement("canvas"); cv.width = cv.height = 16;
+  ["iwashi", "penguin", "tako", "kujira", "panda", "kapibara", "hito", "trex"].forEach((id) => {
+    const s = SPR[id], g = cv.getContext("2d"); g.clearRect(0, 0, 16, 16);
+    const w = Math.max(...s.px.map((r) => r.length)), ox = Math.floor((16 - w) / 2), oy = Math.floor((16 - s.px.length) / 2);
+    s.px.forEach((row, y) => [...row].forEach((ch, x) => { if (s.pal[ch]) { g.fillStyle = s.pal[ch]; g.fillRect(ox + x, oy + y, 1, 1); } }));
+    const img = document.createElement("img"); img.src = cv.toDataURL(); img.alt = ""; document.getElementById("row").appendChild(img);
+  });
+</script>
+</body>
+</html>

@@ -15,7 +15,7 @@ import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "assets" / "fonts"
-SOURCES = ["index.html", "privacy.html", "assets/data.js", "assets/app.js"]
+SOURCES = ["index.html", "privacy.html", "assets/data.js", "assets/app.js", "tools/og.html"]
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
 CHUNK = 150  # 1回のリクエストで送る文字数
 

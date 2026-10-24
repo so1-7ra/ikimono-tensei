@@ -16,6 +16,8 @@
 | `assets/fonts.css`, `assets/fonts/` | サイト内に置いたフォント（自動生成） |
 | `tools/build_fonts.py` | フォントを作り直すスクリプト |
 | `tools/smoke-test.js` | 公開前の動作確認 |
+| `sitemap.xml` | Google Search Console に登録するページの一覧 |
+| `assets/og.png` | Xなどでシェアしたときに出る画像（`tools/make_og.js` で作る） |
 
 サーバー側の処理やデータベースはありません。ブラウザだけで動きます。
 
